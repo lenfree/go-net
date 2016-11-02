@@ -1,0 +1,13 @@
+language: go
+go:
+- 1.7
+deploy:
+  provider: releases
+  api_key:
+    secure: CseZTuYyzYaNoxPRWm71SqHefydkDmo/7Fmfl47cTDYWf3EHrjntj0yV3DCDYkHOXLVuGTClLvDrC9SUoL3QfKPw4H+iJUWyac8HzVH9pdd3qGmxfUWiq9yba+cGA5Swgu3Qxu15awAEHT9MtvwVNIVEyZ/32QdfwjPii1Lvm/+kwFFBRGyn+4E75OZ+oVXksi8GjM56fq3rBObudXd6cgFy4s1lUerjgdXRyvtA1LOGSONDbBWu7d0wd2s4HboIerWeRP8BD9Z8pZEx5SzD0U2SL1CR9mBPMq4PwabcCAurneQ6j9xYI13kifC7j8GI1rwSNmRSYnGiMgVQ7vA21fOLfERB2eSt2OZ0c7tC50RQHpka9mXkzQKa5242vsn/crZg+qgCRRDTe0tmNiMLxPdTgaOUC1D3f6NL6LUVQqZXfFH4shFoVjCREas5fWIT8YvNamsOKXtFB0skUvZzGc5lKBkjN74s/SNT+FQVUgJYuIsvOOiiqroRCBn6xQkEF6RdGhpyAvmXZSmF08A+j9IMxukQGcNTMXB53OENkGD/qo6gDvm5WlhbWgfLY3qR3Zk8v//OfNnt5of6xFKpCoRtD0ht70fKgQu1j9toMvrjIeN0l2d+X37IfD+aN4WXodPq4BhZ1kXhh1Mrlbd3m8C79IDykjzIKfl5LxAZfnc=
+  file:
+    - release/go-net-darwin-amd64
+    - release/go-net-linux-amd64
+  on:
+    repo: lenfree/go-net
+    tags: true

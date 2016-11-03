@@ -1,26 +1,27 @@
 package main
 
 import (
-        "fmt"
-        "github.com/fatih/color"
-        "net"
+        "os"
+
+        "gopkg.in/urfave/cli.v1"
 )
 
-func main() {
-        yellow := color.New(color.FgYellow).SprintFunc()
-        red := color.New(color.FgRed).SprintFunc()
+func initApp() *cli.App {
+        app := cli.NewApp()
 
-        interfaces, err := net.Interfaces()
-        if err != nil {
-                fmt.Printf("%s", err.Error())
+        app.Name = "go-net"
+        app.Version = "0.0.1"
+        app.Usage = "My CLI"
+        app.Author = "Lenfree Yeung"
+        app.Email = "lenfree.yeung@gmail.com"
+
+        app.Commands = []cli.Command{
+                IpNetCli(),
         }
-        for _, i := range interfaces {
-                a, err := i.Addrs()
-                if err != nil {
-                        fmt.Printf("%s", err.Error())
-                }
-                for _, add := range a {
-                        fmt.Printf("%s belongs to %s\n", yellow(add), red(i.Name))
-                }
-        }
+        return app
+}
+
+func main() {
+        app := initApp()
+        app.Run(os.Args)
 }

@@ -9,10 +9,10 @@ import (
 
 func IpNetCli() cli.Command{
         command := cli.Command{
-                Name:      "ipnet",
+                Name     : "ipnet",
                 ShortName: "ip",
-                Usage:     "Return IPv4/IPv6 with interface name",
-                Action:    ipnet,
+                Usage    : "Return IPv4/IPv6 with interface name",
+                Action   : ipnet,
         }
         return command
 }

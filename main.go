@@ -17,6 +17,7 @@ func initApp() *cli.App {
 
         app.Commands = []cli.Command{
                 IpNetCli(),
+                IcmpPingCli(),
         }
         return app
 }

@@ -26,13 +26,23 @@ func ipnet(ctx *cli.Context) {
         if err != nil {
                 fmt.Printf("%s", err.Error())
         }
+        noIPFlag := 0
         for _, i := range interfaces {
                 a, err := i.Addrs()
                 if err != nil {
                         fmt.Printf("%s", err.Error())
                 }
                 for _, add := range a {
-                        fmt.Printf("%s belongs to %s\n", yellow(add), red(i.Name))
+                        ip, _, _ := net.ParseCIDR(add.String())
+
+                        // only return non IPv4 and not loopback interface
+                        if ip.IsLoopback() == false && ip.To4() != nil {
+                                noIPFlag += 1
+                                fmt.Printf("%s belongs to %s\n", yellow(add), red(i.Name))
+                        }
                 }
+        }
+        if noIPFlag == 0 {
+                fmt.Printf("%s\n", "Please verify that you have properly connected to your network.")
         }
 }
